@@ -1,5 +1,3 @@
-<h1>List all items on this homepage</h1>
-
 <div class="d-flex justify-content-center">
   <div class="container">
     <div class="cards">
@@ -9,7 +7,7 @@
           <div class="card-body">
             <h5 class="card-title"><%= item.title %></h5>
             <h6 class="card-subtitle mb-2 text-muted"><%= item.category %></h6>
-            <p class="card-text">$ <%= item.price %> per day</p>
+            <p class="card-text">$<%= item.price %> per day</p>
             <%= link_to "See details", item_path(item) %>
           </div>
         </div>
