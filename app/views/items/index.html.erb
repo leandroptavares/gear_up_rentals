@@ -1,92 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="application.scss">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.2/css/all.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    </head>
-    <body>
-      <div class="container">
-        <%# <nav class="navbar navbar-expand border-bottom d-flex justify-content-between"><i class="fa-solid fa-user"></i>
-        </nav> %>
+<%= render "shared/navbar" %>
 
-
-      <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-        <div class="container-fluid border-bottom py-30" >
-          <a class="navbar-brand" href="#">
-            <img src="https://cdn.worldvectorlogo.com/logos/sports.svg" />
-          </a>
-
-      <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get">
-        <div class="search-form-control form-group">
-          <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Search..." />
-          <button name="button" type="submit" class="btn btn-flat">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </form>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-          <li class="nav-item dropdown">
-            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://i.pinimg.com/236x/59/a9/2f/59a92f5177c56974e1127977f3b603d1.jpg" />
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" data-turbo-method="delete" href="#">Log out</a>
-            </div>
-          </li>
-          <!--li class="nav-item"-->
-          <!--/li-->
-      </ul>
+<div class="container">
+   <div class="categories d-flex justify-content-between my-5">
+    <div class="icons">
+      <i class="fa-regular fa-campground"></i>
+      <i class="fa-regular fa-wave"></i>
+      <i class="fa-light fa-snowflake"></i>
+      <i class="fa-light fa-futbol"></i>
+      <i class="fa-light fa-dumbbell"></i>
+      <i class="fa-light fa-bicycle"></i>
+      <i class="fa-light fa-table-tennis-paddle-ball"></i>
+      <i class="fa-light fa-person-skating"></i>
     </div>
   </div>
-</div>
-</div>
 
-
-        <div class="categories d-flex justify-content-between">
-          <div class="icons">
-            <i class="fa-regular fa-campground"></i>
-            <i class="fa-regular fa-wave"></i>
-            <i class="fa-light fa-snowflake"></i>
-            <i class="fa-light fa-futbol"></i>
-            <i class="fa-light fa-dumbbell"></i>
-            <i class="fa-light fa-bicycle"></i>
-            <i class="fa-light fa-table-tennis-paddle-ball"></i>
-            <i class="fa-light fa-person-skating"></i>
+  <div class="item-container py-3">
+    <div class="card-content ">
+      <div class="card-image">
+        <img src="https://d1brno4kbxrfxy.cloudfront.net/wp-content/blogs.dir/14/files/2019/05/RS16319_shutterstock_522444076-scr-1.jpg?x83652" alt="thumbnail" class="rounded">
+        <div class="d-flex justify-content-between">
+          <div>
+            <h4>Ski Equipment</h4>
+            <h5>$20</h5>
+          </div>
+          <div class="rating d-flex">
+            <!-- <p><strong>7</strong></p>   -->
+            <i class="fa-solid fa-star py-1" style="color: #676767;">7</i>
           </div>
         </div>
-          <div class="item-container py-3">
-            <div class="card-content ">
-                <div class="card-image">
-                  <img src="https://d1brno4kbxrfxy.cloudfront.net/wp-content/blogs.dir/14/files/2019/05/RS16319_shutterstock_522444076-scr-1.jpg?x83652" alt="thumbnail" class="rounded">
-                    <div class="d-flex justify-content-between">
-                      <div>
-                        <h4>Ski Equipment</h4>
-                        <h5>$20</h5>
-                      </div>
-                        <div class="rating d-flex">
-                            <!-- <p><strong>7</strong></p>   -->
-                            <i class="fa-solid fa-star py-1" style="color: #676767;">7</i>
-                        </div>
-                      </div>
-                  </div>
-              </div>
-        </div>
+      </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    </body>
-</html>
+  </div>
+
+</div>
