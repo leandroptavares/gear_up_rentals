@@ -9,21 +9,29 @@
 #   end
 require 'faker'
 
+users = []
+
 10.times do
   full_name = Faker::Name.name
-  users = Faker::Internet.user
-  username = users[:username]
-  user_email = users[:email]
-  user_password = users[:password]
+  # users = Faker::Internet.user
+  # username = users[:username]
+  user_email = Faker::Internet.email
+  user_password = Faker::Internet.password(min_length: 8)
   first_name = full_name.split.first
   last_name = full_name.split.last
 
-  User.create!(
+
+
+  users << User.create!(
     first_name: first_name,
     last_name: last_name,
-    username: username,
+    # username: username,
     email: user_email,
-    password: user_password
+    # password: user_password,
+    password: user_password,
+    # password_confirmation: user_password
+    password_confirmation: user_password
+
   )
 end
 
@@ -39,12 +47,15 @@ url: ["https://petapixel.com/assets/uploads/2022/09/SportsPhotographerBasketball
   price = Faker::Number.between(from: 200, to: 500)
   location = Faker::Address.country
 
+  user = users.sample
+
   Item.create!(
   title: items[:title].sample,
   category: items[:categories].sample,
   location: location,
   price: price,
   description: description,
-  image_url: items[:url].sample
+  image_url: items[:url].sample,
+  user: user
   )
 end
