@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   skip_before_action :authenticate_user!
-  before_action :set_item, only: [:show, :edit, :update]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
     @items = Item.all
@@ -25,6 +25,11 @@ class ItemsController < ApplicationController
   def update
     @item.update(item_params)
     redirect_to item_path(@item)
+  end
+
+  def destroy
+    @item.destroy
+    redirect_to root_path, status: :see_other
   end
 
   private
