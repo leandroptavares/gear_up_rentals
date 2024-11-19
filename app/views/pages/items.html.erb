@@ -1,0 +1,10 @@
+<%# <h1>Show pape for now</h1>
+<div class="card-category text-white text-center p-4 rounded shadow"
+  style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+  url(<%= @item.photo.attached? ? url_for(@item.photo.key) : asset_path('Photo_missing_default.jpg') %>);
+  <%# background-size: cover;
+  background-position: center;
+  height: 250px;" %>
+
+<%# ><h1><%= @item.title %></h1>
+<%# </div> %> %> %>
