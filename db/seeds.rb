@@ -35,15 +35,16 @@ url: ["https://petapixel.com/assets/uploads/2022/09/SportsPhotographerBasketball
 
 50.times do
   description = Faker::Lorem.paragraph(sentence_count: 3)
-  price = Faker::Commerce.price(range: 200..500.0, as_string: true)
+  # price = Faker::Commerce.price(range: 200..500.0, as_string: true)
+  price = Faker::Number.between(from: 200, to: 500)
   location = Faker::Address.country
 
   Item.create!(
-   title: items[:title].sample,
-   category: items[:categories].sample,
-   location: location,
-   price: price,
-   description: description,
-   image_url: items[:url].sample
+  title: items[:title].sample,
+  category: items[:categories].sample,
+  location: location,
+  price: price,
+  description: description,
+  image_url: items[:url].sample
   )
 end
