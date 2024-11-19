@@ -7,6 +7,8 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item_id = params[:item_id]
+    @booking = Booking.new(item_id: @item_id)
   end
 
   def new

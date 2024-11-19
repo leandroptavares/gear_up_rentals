@@ -1,0 +1,8 @@
+<h2>Book this item</h2>
+<strong>Price per day:</strong> <%= number_to_currency(@item.price) %>
+<%= simple_form_for @booking, url: bookings_path do |f| %>
+  <%= f.hidden_field :item_id, value: @item_id %>
+  <%= f.input :start_date, as: :string, input_html: { data: { controller: "datepicker" } } %>
+  <%= f.input :end_date, as: :string, input_html: { data: { controller: "datepicker" } } %>
+  <%= f.submit "Book this item" %>
+<% end %>
