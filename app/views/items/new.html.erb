@@ -1,1 +1,12 @@
 <h1>Add a new item</h1>
+
+<div class=" ">
+  <%= simple_form_for @item do |f| %>
+    <%= f.input :title, placeholder:"Add a descriptive title" %>
+    <%= f.input :price %>
+    <%= f.input :description, placeholder:"Add a description"%>
+    <%= f.assocaiton :category, placeholder: "Select a movie" %>
+    <%= f.input :location %>
+    <%= f.submit %>
+  <%end%>
+</div>
