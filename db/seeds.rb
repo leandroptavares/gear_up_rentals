@@ -13,8 +13,7 @@ users = []
 
 10.times do
   full_name = Faker::Name.name
-  # users = Faker::Internet.user
-  # username = users[:username]
+  usernames = Faker::Internet.username
   user_email = Faker::Internet.email
   user_password = Faker::Internet.password(min_length: 8)
   first_name = full_name.split.first
@@ -25,7 +24,7 @@ users = []
   users << User.create!(
     first_name: first_name,
     last_name: last_name,
-    # username: username,
+    username: usernames,
     email: user_email,
     # password: user_password,
     password: user_password,
