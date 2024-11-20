@@ -1,11 +1,11 @@
     <!-- review Section -->
 
     <!-- show existing reviews section  -->
-    <div>
-       <ol>
+    <div class="reviewbigcontainer">
+       <ul>
         <% @reviews.each do |review| %>
         <li>
-          <div class="container reviewbox border my-5 ">
+          <div class="container reviewbox border ">
           <p>Username:
           <%= review.user.username%>
           </p>
@@ -14,13 +14,15 @@
           </p>
           <p >Review:
           <%= review.comments%>
+          <% if review.user_id == current_user.id %>
           <%=  link_to "Delete", item_review_path(review), class: "delete",
   data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
   </p>
           <% end %>
+          <% end %>
           </div>
         </li>
-       </ol>
+       </ul>
     </div>
 
 
@@ -28,11 +30,13 @@
 <!-- add new review Section -->
 
 <div>
+  <%if current_user%>
 <%= simple_form_for [@item, @review] do |f| %>
   <%= f.input :comments%>
   <p>Rating
   <%= f.select :rating, options_for_select([1, 2, 3, 4, 5], @review.rating), class: "rating-dropdown" %>
   </p>
   <%= f.submit  %>
+<% end %>
 <% end %>
 </div>
