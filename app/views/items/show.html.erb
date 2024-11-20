@@ -1,35 +1,21 @@
-<div class="container mb-4 d-flex flex-column align-items-center">
-  <!-- Title Above the Card -->
-  <h2 class="mb-3 card-title"><%= @item.title %></h2>
-
-  <!-- Card Section -->
-  <div class="card  col-xl," style="width: 100%; max-width: 40rem;">
-    <div class="row g-0">
-      <!-- Image Section -->
-      <div class="col-md-4">
-        <% if @item.image_url.present? %>
-          <%= image_tag @item.image_url, class: "img-fluid rounded-start" %>
+<div class="container">
+<h1><%= @item.title %></h1>
+  <div class="row">
+    <!-- Details Section -->
+    <div class="col-md-8 details">
+      <div>
+        <p><% if @item.image_url.present? %>
+          <%= image_tag @item.image_url, class: "img-fluid" %>
         <% end %>
-      </div>
-      <!-- Content Section -->
-      <div class="col-md-8">
-        <div class="card-body">
-
-          <p class="card-text"><%= @item.user.username %></p>
-          <p class="card-text">
-            <strong>Price:</strong> <%= number_to_currency(@item.price) %>
-          </p>
-          <%= link_to "Button", items_path, class: "btn btn-primary mt-3" %>
-        </div>
-      </div>
+      </div></p>
+      <h3>Description:</h3>
+      <p><%= @item.description %></p>
+      <p class="card-text">Renter: <%= @item.user.username %></p>
     </div>
 
-    <!-- Full-Width Description Section -->
-    <div class="card-body border-top">
-      <h6 class="text-muted mb-2">Description</h6>
-      <p class="text-muted">
-        <%= @item.description %>
-      </p>
+    <!-- Booking Section -->
+    <div class="col-md-4 booking">
+      <%= render "bookings/new" %>
     </div>
   </div>
 </div>
