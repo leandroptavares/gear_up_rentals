@@ -43,7 +43,7 @@ url: ["https://petapixel.com/assets/uploads/2022/09/SportsPhotographerBasketball
 50.times do
   description = Faker::Lorem.paragraph(sentence_count: 3)
   # price = Faker::Commerce.price(range: 200..500.0, as_string: true)
-  price = Faker::Number.between(from: 200, to: 500)
+  price = Faker::Number.between(from: 30, to: 80)
   location = Faker::Address.country
 
   user = users.sample
