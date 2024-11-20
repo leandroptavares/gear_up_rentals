@@ -14,8 +14,7 @@ class ItemsController < ApplicationController
     @item_id = params[:item_id]
     @booking = Booking.new(item_id: @item_id)
     @review = Review.new(item_id: @item_id)
-    # @reviews = @item.review.includes(:user)
-    @reviews = Review.all
+    @reviews = Review.where(item_id: @item.id)
   end
 
   def new
