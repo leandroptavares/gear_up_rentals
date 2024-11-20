@@ -1,0 +1,23 @@
+.reviewbox {
+  position: relative;
+  justify-content: left;
+  margin: 0;
+  border-radius: 15px;
+  width: 100%;
+}
+
+.delete {
+  position: absolute;
+  color: black;
+  top: 10px;
+  right: 10px;
+  font-weight: 900;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+ul li{
+  margin-bottom: 10px;
+}

@@ -13,6 +13,9 @@ class ItemsController < ApplicationController
   def show
     @item_id = params[:item_id]
     @booking = Booking.new(item_id: @item_id)
+    @review = Review.new(item_id: @item_id)
+    # @reviews = @item.review.includes(:user)
+    @reviews = Review.all
   end
 
   def new
