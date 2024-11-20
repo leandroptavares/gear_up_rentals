@@ -1,16 +1,23 @@
 class BookingsController < ApplicationController
   skip_before_action :authenticate_user!
-  before_action :set_booking, only: [:destroy]
+  before_action :set_booking, only: [:destroy, :show]
+
+  def index
+      @bookings = Booking.where(user_id: params[:user_id])
+  end
 
   def new
     @booking = Booking.new
+  end
+
+  def show
   end
 
   def create
     @booking = Booking.new(booking_params)
     @booking.user_id = current_user.id
     @booking.save!
-    redirect_to root_path
+    redirect_to booking_path(@booking)
   end
 
   def destroy
