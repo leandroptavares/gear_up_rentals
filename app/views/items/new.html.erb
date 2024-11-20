@@ -1,12 +1,33 @@
-<h1>Add a new item</h1>
+<div class="container">
+  <h1 class="d-flex justify-content-center">Rent out an item</h1>
+  <div class="d-flex justify-content-center align-items-center p-5">
+    <div class=" items container mx-3">
+     <h3 class="text-start">Your Items</h3>
+      <ul class="new items border rounded">
+        <li>Title</li>
+        <li>Price</li>
+        <li>Description</li>
+        <li>Category</li>
+        <li>Location</li>
+      </ul>
+    </div>
 
-<div class=" ">
-  <%= simple_form_for @item do |f| %>
-    <%= f.input :title, placeholder:"Add a descriptive title" %>
-    <%= f.input :price %>
-    <%= f.input :description, placeholder:"Add a description"%>
-    <%= f.assocaiton :category, placeholder: "Select a movie" %>
-    <%= f.input :location %>
-    <%= f.submit %>
-  <%end%>
+
+    <div class="form container mx-3 col-12 col-sm-4 shadow-lg p-5">
+      <form action="">
+          <!-- Your form content -->
+        <%= simple_form_for @item do |f| %>
+          <%= f.input :title, placeholder:"Add a descriptive title" %>
+          <%= f.input :price %>
+          <%= f.input :description, placeholder:"Add a description"%>
+          <%= f.input :category, as: :select, collection: Item::CATEGORIES, prompt: "Select category" %>
+          <%= f.input :location %>
+
+          <div  class="d-flex justify-content-center pb-1">
+            <%= f.submit "Submit", class: "btn btn-primary" %>
+          </div>
+        <%end%>
+      </form>
+    </div>
+  </div>
 </div>
