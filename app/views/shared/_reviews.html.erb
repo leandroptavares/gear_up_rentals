@@ -2,7 +2,7 @@
 
     <!-- show existing reviews section  -->
     <div class="reviewbigcontainer">
-       <ul>
+        <ul>
         <% @reviews.each do |review| %>
         <li>
           <div class="container reviewbox border ">
@@ -16,20 +16,17 @@
           <%= review.comments%>
           <% if current_user && review.user_id == current_user.id%>
           <%=  link_to "🗑️ Delete", item_review_path(review), class: "delete",
-         data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-       </p>
+          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+        </p>
           <% end %>
           <% end %>
           </div>
         </li>
-       </ul>
-    </div>
-
+        </ul>
 
 <!-- review Section -->
 <!-- add new review Section -->
 
-<div>
   <%if current_user%>
 <%= simple_form_for [@item, @review] do |f| %>
   <%= f.input :comments, class: "reviewbox" %>
