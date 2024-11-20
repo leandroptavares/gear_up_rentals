@@ -77,3 +77,5 @@ end
 
 #Adding Devise
 gem "devise"
+
+gem "cloudinary"

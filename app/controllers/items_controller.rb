@@ -19,12 +19,17 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @items = current_user.items
   end
 
   def create
     @item = Item.new(item_params)
-    @item.save
-    redirect_to item_path(@item)
+    @item.user_id = current_user.id
+    if @item.save
+      redirect_to new_item_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -43,7 +48,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:title, :description, :price, :category, :location, :image_url)
+    params.require(:item).permit(:title, :description, :price, :category, :location, :image)
   end
 
   def set_item
