@@ -1,8 +1,13 @@
 <h2>Book this item</h2>
-<strong>Price per day:</strong> <%= number_to_currency(@item.price) %>
-<%= simple_form_for @booking, url: bookings_path do |f| %>
-  <%= f.hidden_field :item_id, value: @item_id %>
-  <%= f.input :start_date, as: :string, input_html: { data: { controller: "datepicker" } } %>
-  <%= f.input :end_date, as: :string, input_html: { data: { controller: "datepicker" } } %>
-  <%= f.submit "Book this item" %>
-<% end %>
+<div data-controller="total-price" data-total-price-price-per-day-value="<%= @item.price %>">
+  Price per day: $<%= @item.price %></strong>
+  <%= simple_form_for @booking, url: bookings_path do |f| %>
+    <%= f.hidden_field :item_id, value: @item.id %>
+    <%= f.hidden_field :total_price, { data: { total_price_target: "result" } }%>
+
+    <%= f.input :start_date, as: :string, input_html: { data: { controller: "datepicker", total_price_target: "startDate", action: "change->total-price#sum"} } %>
+    <%= f.input :end_date, as: :string, input_html: { data: { controller: "datepicker", total_price_target: "endDate", action: "change->total-price#sum" } } %>
+    <strong><p data-total-price-target="totalPrice" class="d-none"></p><strong>
+    <%= f.submit "Book this item" %>
+  <% end %>
+</div>
