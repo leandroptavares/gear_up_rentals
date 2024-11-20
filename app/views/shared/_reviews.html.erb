@@ -1,0 +1,38 @@
+    <!-- review Section -->
+
+    <!-- show existing reviews section  -->
+    <div>
+       <ol>
+        <% @reviews.each do |review| %>
+        <li>
+          <div class="container reviewbox border my-5 ">
+          <p>Username:
+          <%= review.user.username%>
+          </p>
+          <p>Rating:
+          <%= review.rating%>
+          </p>
+          <p >Review:
+          <%= review.comments%>
+          <%=  link_to "Delete", item_review_path(review), class: "delete",
+  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+  </p>
+          <% end %>
+          </div>
+        </li>
+       </ol>
+    </div>
+
+
+<!-- review Section -->
+<!-- add new review Section -->
+
+<div>
+<%= simple_form_for [@item, @review] do |f| %>
+  <%= f.input :comments%>
+  <p>Rating
+  <%= f.select :rating, options_for_select([1, 2, 3, 4, 5], @review.rating), class: "rating-dropdown" %>
+  </p>
+  <%= f.submit  %>
+<% end %>
+</div>
