@@ -8,7 +8,8 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.save
+    @booking.user_id = current_user.id
+    @booking.save!
     redirect_to root_path
   end
 
@@ -20,7 +21,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :total_price)
+    params.require(:booking).permit(:start_date, :end_date, :total_price, :item_id)
   end
 
   def set_booking
