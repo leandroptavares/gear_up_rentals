@@ -48,13 +48,17 @@ url: ["https://petapixel.com/assets/uploads/2022/09/SportsPhotographerBasketball
 
   user = users.sample
 
-  Item.create!(
-  title: items[:title].sample,
-  category: items[:categories].sample,
-  location: location,
-  price: price,
-  description: description,
-  image_url: items[:url].sample,
-  user: user
+  item = Item.new(
+    title: items[:title].sample,
+    category: items[:categories].sample,
+    location: location,
+    price: price,
+    description: description,
+    image_url: items[:url].sample,
+    user: user
   )
+
+  
+
+  item.save
 end

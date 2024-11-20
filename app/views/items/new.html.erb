@@ -3,31 +3,36 @@
   <div class="d-flex justify-content-center align-items-center p-5">
     <div class=" items container mx-3">
      <h3 class="text-start">Your Items</h3>
-      <ul class="new items border rounded">
-        <li>Title</li>
-        <li>Price</li>
-        <li>Description</li>
-        <li>Category</li>
-        <li>Location</li>
-      </ul>
+     <% @items.each do |item| %>
+        <ul class="border rounded">
+          <% if item.image.attached? %>
+            <%= cl_image_tag item.image.key, height: 50, width: 50, crop: :fill %>
+          <% else %>
+            <p>default image</p>
+          <% end %>
+          <li><%=item.title %></li>
+          <li><%=item.price %></li>
+          <li><%=item.description %></li>
+          <li><%=item.category %></li>
+          <li><%=item.location %></li>
+        </ul>
+      <% end %>
     </div>
 
-
     <div class="form container mx-3 col-12 col-sm-4 shadow-lg p-5">
-      <form action="">
           <!-- Your form content -->
-        <%= simple_form_for @item do |f| %>
-          <%= f.input :title, placeholder:"Add a descriptive title" %>
-          <%= f.input :price %>
-          <%= f.input :description, placeholder:"Add a description"%>
-          <%= f.input :category, as: :select, collection: Item::CATEGORIES, prompt: "Select category" %>
-          <%= f.input :location %>
+      <%= simple_form_for @item do |f| %>
+        <%= f.input :title, placeholder:"Add a descriptive title" %>
+        <%= f.input :price %>
+        <%= f.input :image, as: :file,  input_html: { multiple: false }%>
+        <%= f.input :description, placeholder:"Add a description"%>
+        <%= f.input :category, as: :select, collection: Item::CATEGORIES, prompt: "Select category" %>
+        <%= f.input :location %>
 
-          <div  class="d-flex justify-content-center pb-1">
-            <%= f.submit "Submit", class: "btn btn-primary" %>
-          </div>
-        <%end%>
-      </form>
+        <div  class="d-flex justify-content-center pb-1">
+          <%= f.submit "Submit", class: "btn btn-primary" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
