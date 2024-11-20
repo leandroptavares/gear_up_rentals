@@ -5,7 +5,7 @@
   <p><strong>Pick-up location: </strong><%= @booking.item.location %></p>
   <p><strong>Item owner: </strong><%= @booking.item.user.first_name %> <%= @booking.item.user.last_name %></p>
   <p><strong>Start date: </strong><%= @booking.start_date %></p>
-  <p><strong>End date: </strong><%= @booking.start_date %></p>
+  <p><strong>End date: </strong><%= @booking.end_date %></p>
   <p><strong>Total price: </strong>$<%= @booking.total_price %></p>
   <br>
   <strong><%= link_to "Check all your bookings", bookings_path(user_id: @booking.user_id ) %></strong>
