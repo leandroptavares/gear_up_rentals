@@ -3,10 +3,16 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
-    @items = Item.all
+    if params[:category].present?
+      @items = Item.where(category: params[:category])
+    else
+      @items = Item.all
+    end
   end
 
   def show
+    @item_id = params[:item_id]
+    @booking = Booking.new(item_id: @item_id)
   end
 
   def new

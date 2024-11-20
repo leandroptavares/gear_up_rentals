@@ -1,0 +1,30 @@
+// .categories li {
+//   // display: inline-block;
+//   // justify-content: space-between;
+//   display: block;
+//   color: white;
+//   text-align: center;
+//   padding: 16px;
+//   text-decoration: none;
+// }
+
+a {
+  text-decoration: none;
+  color: rgb(4, 76, 60);
+}
+
+.categories {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.categories li {
+  display: flex;
+  align-items: center;
+  color: rgb(4, 76, 60);
+  padding: 16px;
+  text-decoration: none;
+  gap: 8px;
+  flex-direction: column;
+}
