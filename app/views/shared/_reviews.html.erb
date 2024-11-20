@@ -6,16 +6,16 @@
         <% @reviews.each do |review| %>
         <li>
           <div class="container reviewbox border ">
-          <p>Username:
+          <p><strong>Username:</strong>
           <%= review.user.username%>
           </p>
-          <p>Rating:
+          <p><strong>Rating:</strong>
           <%= review.rating%>
           </p>
-          <p >Review:
+          <p><strong>Review:</strong>
           <%= review.comments%>
           <% if review.user_id == current_user.id %>
-          <%=  link_to "Delete", item_review_path(review), class: "delete",
+          <%=  link_to "🗑️ Delete", item_review_path(review), class: "delete",
   data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
   </p>
           <% end %>
@@ -32,11 +32,11 @@
 <div>
   <%if current_user%>
 <%= simple_form_for [@item, @review] do |f| %>
-  <%= f.input :comments%>
+  <%= f.input :comments, class: "reviewbox" %>
   <p>Rating
   <%= f.select :rating, options_for_select([1, 2, 3, 4, 5], @review.rating), class: "rating-dropdown" %>
   </p>
-  <%= f.submit  %>
+  <%= f.submit class: "reviewbox" %>
 <% end %>
 <% end %>
 </div>
