@@ -15,7 +15,14 @@
 
     <!-- Booking Section -->
     <div class="col-md-4 booking">
-      <%= render "bookings/new" %>
+      <% if current_user %>
+        <%= render "bookings/new" %>
+      <% else %>
+        <h2>Interested on this item?</h2>
+        <%= link_to "Sign in", user_session_path%>
+      <% end %>
     </div>
   </div>
+    <h3 class="mt-3">Reviews:</h3>
+    <%= render "shared/reviews" %>
 </div>

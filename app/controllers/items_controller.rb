@@ -13,6 +13,8 @@ class ItemsController < ApplicationController
   def show
     @item_id = params[:item_id]
     @booking = Booking.new(item_id: @item_id)
+    @review = Review.new(item_id: @item_id)
+    @reviews = Review.where(item_id: @item.id)
   end
 
   def new
