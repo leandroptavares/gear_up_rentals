@@ -1,38 +1,20 @@
-<div class="container">
-  <h1 class="d-flex justify-content-center">Rent out an item</h1>
-  <div class="d-flex justify-content-center align-items-center p-5">
-    <div class=" items container mx-3">
-     <h3 class="text-start">Your Items</h3>
-     <% @items.each do |item| %>
-        <ul class="border rounded">
-          <% if item.image.attached? %>
-            <%= cl_image_tag item.image.key, height: 50, width: 50, crop: :fill %>
-          <% else %>
-            <p>default image</p>
-          <% end %>
-          <li><%=item.title %></li>
-          <li><%=item.price %></li>
-          <li><%=item.description %></li>
-          <li><%=item.category %></li>
-          <li><%=item.location %></li>
-        </ul>
-      <% end %>
-    </div>
+<div class="container min-vh-100 d-flex flex-column justify-content-center align-items-center">
+  <h1 class="text-center">Rent out an item</h1>
 
-    <div class="form container mx-3 col-12 col-sm-4 shadow-lg p-5">
-          <!-- Your form content -->
-      <%= simple_form_for @item do |f| %>
-        <%= f.input :title, placeholder:"Add a descriptive title" %>
-        <%= f.input :price %>
-        <%= f.input :image, as: :file,  input_html: { multiple: false }%>
-        <%= f.input :description, placeholder:"Add a description"%>
-        <%= f.input :category, as: :select, collection: Item::CATEGORIES, prompt: "Select category" %>
-        <%= f.input :location %>
+  <div class="form container mx-3 col-12 col-sm-4 shadow-lg p-5">
+    <!-- Your form content -->
+    <%= simple_form_for @item do |f| %>
+      <%= f.input :title, placeholder:"Add a descriptive title" %>
+      <%= f.input :price %>
+      <%= f.input :image, as: :file,  input_html: { multiple: false } %>
+      <%= f.input :description, placeholder:"Add a description" %>
+      <%= f.input :category, as: :select, collection: Item::CATEGORIES, prompt: "Select category" %>
+      <%= f.input :location %>
 
-        <div  class="d-flex justify-content-center pb-1">
-          <%= f.submit "Submit", class: "btn btn-primary" %>
-        </div>
-      <% end %>
-    </div>
+      <div class="d-flex justify-content-center pb-1">
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+      </div>
+    <% end %>
   </div>
 </div>
+

@@ -19,14 +19,13 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @items = current_user.items
   end
 
   def create
     @item = Item.new(item_params)
     @item.user_id = current_user.id
     if @item.save
-      redirect_to new_item_path
+      redirect_to my_items_path
     else
       render :new
     end
@@ -37,12 +36,12 @@ class ItemsController < ApplicationController
 
   def update
     @item.update(item_params)
-    redirect_to item_path(@item)
+    redirect_to my_items_path
   end
 
   def destroy
     @item.destroy
-    redirect_to root_path, status: :see_other
+    redirect_to my_items_path, status: :see_other
   end
 
   private
