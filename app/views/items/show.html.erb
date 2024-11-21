@@ -10,7 +10,7 @@
       </div></p>
       <h3>Description:</h3>
       <p><%= @item.description %></p>
-      <p class="card-text">Renter: <%= @item.user.username %></p>
+      <p class="card-text">Renter: <%= link_to @item.user.username, user_items_path(user_id: @item.user.id) %></p>
     </div>
 
     <!-- Booking Section -->
@@ -26,3 +26,5 @@
     <h3 class="mt-3">Reviews:</h3>
     <%= render "reviews/reviews" %>
 </div>
+
+<%= link_to @item.user.username, user_items_path(user_id: @item.user.id) %>

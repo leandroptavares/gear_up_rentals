@@ -8,4 +8,9 @@ class PagesController < ApplicationController
       redirect_to  new_user_session_path
     end
   end
+
+  def user_items
+    @user = User.find(params[:user_id])
+    @items = @user.items
+  end
 end

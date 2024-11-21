@@ -19,7 +19,11 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to booking_path(@booking)
     else
-      # render 'items/:id', status: :unprocessable_entity
+      @item = Item.find(@booking.item.id)
+      @item_id = @item.id
+      @review = Review.new(item_id: @item_id)
+      @reviews = Review.where(item_id: @item.id)
+      render "items/show", status: :unprocessable_entity
     end
   end
 
