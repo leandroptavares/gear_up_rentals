@@ -11,7 +11,7 @@
       <h3>Description:</h3>
       <p><%= @item.description %></p>
       <p class="card-text">Renter: <%= link_to @item.user.username, user_items_path(user_id: @item.user.id) %></p>
-      <p class="card-text">Location: <%= @item.location %></p>
+      <p class="card-text">Pick-up location: <%= @item.location %></p>
 
     </div>
 
