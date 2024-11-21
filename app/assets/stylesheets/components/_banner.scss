@@ -1,43 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
-
-@keyframes gradientAnimation {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.banner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 100px 20px;
-  background: linear-gradient(45deg, #a8e063, #56ab2f, #9be7a6, #2b9348);
-  background-size: 300% 300%;
-  animation: gradientAnimation 10s ease infinite;
-  border-radius: 10px;
-  margin: 10px 15px 20px;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-  color: white;
-}
-
-.banner h1 {
-  font-family: 'Audiowide', sans-serif;
-  font-size: 3rem;
-  font-weight: bold;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  margin-bottom: 20px;
-}
-
-.banner p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  opacity: 0.9;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-}
-
-// Idea 2
-
 // @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
 
 // @keyframes gradientAnimation {
@@ -53,27 +13,21 @@
 //   text-align: center;
 //   padding: 100px 20px;
 //   background: linear-gradient(45deg, #a8e063, #56ab2f, #9be7a6, #2b9348);
-//   background-size: 100% 100%;
+//   background-size: 300% 300%;
 //   animation: gradientAnimation 10s ease infinite;
 //   border-radius: 10px;
 //   margin: 10px 15px 20px;
 //   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-//   height: calc(100vh - 4rem);
 //   color: white;
 // }
 
-// .banner-container {
-//   max-width: 1200px;
-//   margin: 0 auto;
-// }
-
-// .title-wrapper {
-//   display: grid;
-//   align-items: center;
-//   justify-content: center;
-//   transform: skew(0, -10deg);
-//   margin-bottom: 20px;
-// }
+// // .banner h1 {
+// //   font-family: 'Audiowide', sans-serif;
+// //   font-size: 3rem;
+// //   font-weight: bold;
+// //   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+// //   margin-bottom: 20px;
+// // }
 
 // .sweet-title {
 //   color: #fde9ff;
@@ -103,18 +57,92 @@
 //   z-index: 1;
 // }
 
-// .top-title {
-//   text-align: center;
-//   color: #fff;
-//   font-size: clamp(1rem, 4vw, 1.5rem);
-//   margin-bottom: 10px;
-//   // padding-right: 2rem;
-//   margin-top: 10px;
+// .banner p {
+//   font-size: 1.2rem;
+//   line-height: 1.6;
+//   opacity: 0.9;
+//   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
 // }
 
-// .bottom-title {
-//   text-align: center;
-//   color: #fff;
-//   font-size: clamp(1rem, 4vw, 1.5rem);
-//   margin-top: 10px
-// }
+// Idea 2
+
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 20px;
+  background: linear-gradient(45deg, #a8e063, #56ab2f, #9be7a6, #2b9348);
+  background-size: 300% 300%;
+  animation: gradientAnimation 10s ease infinite;
+  border-radius: 10px;
+  margin: 10px 15px 20px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  // height: calc(100vh - 4rem);
+  color: white;
+}
+
+.banner-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title-wrapper {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  transform: skew(0, -10deg);
+  margin-bottom: 20px;
+}
+
+.sweet-title {
+  color: #fde9ff;
+  font-family: "Space Grotesk", serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(3rem, 10vw, 6rem);
+  line-height: 0.75em;
+  text-align: center;
+  text-shadow: 3px 1px 1px #4af7ff, 2px 2px 1px #165bfb, 4px 2px 1px #4af7ff,
+    3px 3px 1px #165bfb, 5px 3px 1px #4af7ff, 4px 4px 1px #165bfb,
+    6px 4px 1px #4af7ff, 5px 5px 1px #165bfb, 7px 5px 1px #4af7ff,
+    6px 6px 1px #165bfb, 8px 6px 1px #4af7ff, 7px 7px 1px #165bfb,
+    9px 7px 1px #4af7ff;
+}
+
+.sweet-title span {
+  display: block;
+  position: relative;
+}
+
+.sweet-title span:before {
+  content: attr(data-text);
+  position: absolute;
+  text-shadow: 2px 2px 1px #e94aa1, -1px -1px 1px #c736f9,
+    -2px 2px 1px #e94aa1, 1px -1px 1px #f736f9;
+  z-index: 1;
+}
+
+.top-title {
+  text-align: center;
+  color: #fff;
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  margin-bottom: 10px;
+  // padding-right: 2rem;
+  margin-top: 10px;
+}
+
+.bottom-title {
+  text-align: center;
+  color: #fff;
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  margin-top: 10px
+}
