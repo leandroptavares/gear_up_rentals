@@ -6,14 +6,15 @@
         <% @reviews.each do |review| %>
         <li>
           <div class="container reviewbox border ">
-          <p><strong>Username:</strong>
-          <%= review.user.username%>
-          </p>
-          <p><strong>Rating:</strong>
+            <div class= "d-flex align-items-center pt-3">
+              <i class="fa-solid fa-circle-user fa-2xl pb-2" style="color: #769fa7;"></i>
+              <strong><h5 class="ps-2"><%= review.user.username%></h5><strong>
+            </div>
+          <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
           <%= review.rating%>
           </p>
-          <p><strong>Review:</strong>
-          <%= review.comments%>
+          <%# <p><strong>Review:</strong> %>
+          <p><%= review.comments%></p>
           <% if current_user && review.user_id == current_user.id%>
           <%=  link_to "🗑️ Delete", item_review_path(review), class: "delete",
           data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
@@ -29,9 +30,17 @@
 
   <%if current_user%>
 <%= simple_form_for [@item, @review] do |f| %>
-  <%= f.input :comments, class: "reviewbox" %>
-  <p>Rating
-  <%= f.select :rating, options_for_select([1, 2, 3, 4, 5], @review.rating), class: "rating-dropdown" %>
+  <%= f.input :comments, class: "reviewbox", placeholder: "Leave a review" %>
+  <%# <p>Rating %>
+  <%# <%= f.select :rating, options_for_select([1, 2, 3, 4, 5], @review.rating), class: "rating-dropdown" %>
+  <%= f.label :rating, 'Rating' %>
+    <div class="star-rating">
+      <% (1..5).each do |star| %>
+        <%= f.radio_button :rating, star %>
+        <%= f.label :rating, star, value: star do %>
+          <%= "★" %>
+        <% end %>
+      <% end %>
   </p>
   <%= f.submit class: "reviewbox" %>
 <% end %>
