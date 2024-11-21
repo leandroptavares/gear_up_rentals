@@ -16,4 +16,5 @@ Rails.application.routes.draw do
 
   resources :bookings, only: [:new, :create, :destroy, :index, :show]
 
+  get "my-items", to: "pages#my_items", as: :my_items
 end
