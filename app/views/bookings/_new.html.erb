@@ -7,7 +7,7 @@
 
     <%= f.input :start_date, as: :string, input_html: { data: { controller: "datepicker", total_price_target: "startDate", action: "change->total-price#sum"} } %>
     <%= f.input :end_date, as: :string, input_html: { data: { controller: "datepicker", total_price_target: "endDate", action: "change->total-price#sum" } } %>
-    <strong><p data-total-price-target="totalPrice" class="d-none"></p><strong>
+    <strong><p data-total-price-target="totalPrice" class="d-none"></p></strong>
     <%= f.submit "Book this item" %>
   <% end %>
 </div>
