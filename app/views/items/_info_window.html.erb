@@ -1,6 +1,6 @@
 <div class="mapboxgl-pop">
 <h4><%= item.title %></h4>
-<%= image_tag item.image_url, class: "img-fluid" %>
+<%= cl_image_tag item.image.key, class: "img-fluid" %>
 <h6>Location: <%= item.location %></h6>
-<h6 >Pirce: <%= item.price %> per day</h6>
+<h6>Price: <%= item.price %> per day</h6>
 </div>
