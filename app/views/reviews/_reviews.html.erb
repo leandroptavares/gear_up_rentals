@@ -5,23 +5,28 @@
   <ul>
     <% @reviews.each do |review| %>
       <li>
-        <div class="container reviewbox border">
-          <p><strong>Username:</strong>
-            <%= review.user.username %>
-          </p>
-          <p><strong>Rating:</strong>
-            <%= review.rating %>
-          </p>
-          <p><strong>Review:</strong>
-            <%= review.comments %>
-          </p>
-          <p><em>Published on <%= review.created_at.strftime("%d/%m/%Y") %></em>
-          </p>
+        <div class="card">
+          <div class="card-header">
+            <% review.rating.times do %>
+              <i class="fa-solid fa-star"></i>
+            <% end %>
+            <% (5 - review.rating).times do %>
+              <i class="fa-regular fa-star"></i>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p><%= review.comments %></p>
+              <footer class="blockquote-footer"><%= review.user.username %>
+              <p><cite title="Source Title">Published on <%= review.created_at.strftime("%d/%m/%Y") %></cite></p></footer>
+            </blockquote>
+          </div>
           <% if current_user && review.user_id == current_user.id %>
             <%= link_to item_review_path(review), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "delete text-decoration-none" do %>
                 <i class="fa-solid fa-trash"></i> Delete review
             <% end %>
           <% end %>
+
         </div>
       </li>
     <% end %>
@@ -34,7 +39,9 @@
 <% if current_user %>
   <% if @item.bookings.any? { |booking| booking.user_id == current_user.id } %>
     <% if @item.reviews.any? { |review| review.user_id == current_user.id } %>
-      <p>You've already added a review</p>
+      <div class="alert alert-success" role="alert">
+        We've got your review! Keep gearing up like a pro.
+      </div>
     <% else %>
       <%= simple_form_for [@item, @review] do |f| %>
         <%= f.input :comments, class: "reviewbox" %>
@@ -45,6 +52,8 @@
       <% end %>
     <% end %>
   <% else %>
-    <p>You haven't booked this item yet</p>
+    <div class="alert alert-warning" role="alert">
+      You haven't booked this item yet—book now and share your review later!
+    </div>
   <% end %>
 <% end %>

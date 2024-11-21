@@ -18,4 +18,5 @@ Rails.application.routes.draw do
 
   get "my-items", to: "pages#my_items", as: :my_items
   get "user-items", to: "pages#user_items", as: :user_items
+  get "my-account", to: "pages#my_account", as: :my_account
 end
