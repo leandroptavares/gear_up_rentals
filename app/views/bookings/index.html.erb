@@ -29,6 +29,12 @@
               </div>
             </div>
           </div>
+          <% if booking.item.reviews.none? { |review| review.user_id == current_user.id } %>
+              <div class="alert alert-warning" role="alert">
+                Did you enjoy your time with this item? Don't forget to <%= link_to "add a review", item_path(id: booking.item)  %>!
+                <%=  %>
+              </div>
+            <% end %>
         <% end %>
       </div>
     <% else %>
