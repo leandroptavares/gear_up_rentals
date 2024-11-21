@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def my_items
     if current_user
-      @items = current_user.items
+      @items = current_user.items.order(created_at: :desc)
     else
       redirect_to  new_user_session_path
     end

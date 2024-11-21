@@ -4,8 +4,8 @@
     <!-- Details Section -->
     <div class="col-md-8 details">
       <div>
-        <p><% if @item.image_url.present? %>
-          <%= image_tag @item.image_url, class: "img-fluid" %>
+        <p><% if @item.image.attached? %>
+          <%= cl_image_tag @item.image.key, style: "height: 100%; width: 100%; object-fit: cover;" %>
         <% end %>
       </div></p>
       <h3>Description:</h3>

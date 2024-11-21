@@ -16,8 +16,11 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user_id = current_user.id
-    @booking.save!
-    redirect_to booking_path(@booking)
+    if @booking.save
+      redirect_to booking_path(@booking)
+    else
+      # render 'items/:id', status: :unprocessable_entity
+    end
   end
 
   def destroy
