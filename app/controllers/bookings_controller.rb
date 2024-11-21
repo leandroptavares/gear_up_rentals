@@ -3,7 +3,7 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:destroy, :show]
 
   def index
-      @bookings = Booking.where(user_id: params[:user_id])
+    @bookings = Booking.where(user_id: params[:user_id]).order(created_at: :desc)
   end
 
   def new

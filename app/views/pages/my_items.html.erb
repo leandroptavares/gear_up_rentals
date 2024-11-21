@@ -1,36 +1,36 @@
 <div class="d-flex justify-content-center">
   <div class="container">
-    <h1 class="text-center">Your items</h1>
-    <div class="cards d-flex flex-wrap justify-content-center gap-3">
-      <% @items.each do |item| %>
-        <div class="card" style="width: 18rem;">
-          <% if item.image.attached? %>
-            <div class="card-img-top" style="height: 180px; overflow: hidden;">
-              <%= cl_image_tag item.image.key, class: "img-fluid", style: "height: 100%; width: 100%; object-fit: cover;" %>
-            </div>
-          <% else %>
-            <div class="card-img-top" style="height: 180px; background-color: #f8f9fa; display: flex; justify-content: center; align-items: center;">
-              <p>Default image</p>
-            </div>
-          <% end %>
-          <div class="card-body">
-            <h5 class="card-title"><strong><%= item.title %></strong></h5>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Category: <%= item.category %></li>
-            <li class="list-group-item">Price per day: $<%= item.price %></li>
-            <li class="list-group-item">Pick-up location: <%= item.location %></li>
-          </ul>
-          <div class="card-body d-flex justify-content-between">
-            <%= link_to edit_item_path(item), class: "text-decoration-none" do %>
-              <i class="fa-solid fa-pen-to-square"></i> Edit item
+    <h1 class="text-center">You have a total of <%= @items.count %> items listed!</h1>
+      <div class="cards d-flex flex-wrap justify-content-center gap-3">
+        <% @items.each do |item| %>
+          <div class="card" style="width: 18rem;">
+            <% if item.image.attached? %>
+              <div class="card-img-top" style="height: 180px; overflow: hidden;">
+                <%= cl_image_tag item.image.key, class: "img-fluid", style: "height: 100%; width: 100%; object-fit: cover;" %>
+              </div>
+            <% else %>
+              <div class="card-img-top" style="height: 180px; background-color: #f8f9fa; display: flex; justify-content: center; align-items: center;">
+                <p>Default image</p>
+              </div>
             <% end %>
-            <%= link_to item_path(item), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-decoration-none" do %>
-              <i class="fa-solid fa-trash"></i> Delete item
-            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><strong><%= item.title %></strong></h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Category: <%= item.category %></li>
+              <li class="list-group-item">Price per day: $<%= item.price %></li>
+              <li class="list-group-item">Pick-up location: <%= item.location %></li>
+            </ul>
+            <div class="card-body d-flex justify-content-between">
+              <%= link_to edit_item_path(item), class: "text-decoration-none" do %>
+                <i class="fa-solid fa-pen-to-square"></i> Edit item
+              <% end %>
+              <%= link_to item_path(item), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-decoration-none" do %>
+                <i class="fa-solid fa-trash"></i> Delete item
+              <% end %>
+            </div>
           </div>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
   </div>
 </div>
