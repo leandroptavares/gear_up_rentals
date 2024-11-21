@@ -9,6 +9,11 @@ class Item < ApplicationRecord
   CATEGORIES = ["Outdoor Adventure", "Water Sports", "Winter Sports", "Team Sports", "Fitness & Training", "Cycling", "Recreational Sports", "Extreme Sports"]
   validates :title, :description, :price, :category, :location, presence: true
   validates :category, inclusion: { in: CATEGORIES }
-end
 
-# ->(obj) { obj.location.present? && obj.location_changed? }
+  include PgSearch::Model
+  pg_search_scope :search_by_title_and_category_and_location,
+    against: [ :title, :category, :location, :description],
+  using: {
+    tsearch: { prefix: true }
+  }
+end
