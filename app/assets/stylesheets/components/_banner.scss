@@ -67,6 +67,7 @@
 // Idea 2
 
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@300;700;900&display=swap");
 
 @keyframes gradientAnimation {
   0% { background-position: 0% 50%; }
@@ -79,12 +80,12 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 100px 20px;
+  padding: 80px 20px;
   background: linear-gradient(45deg, #a8e063, #56ab2f, #9be7a6, #2b9348);
   background-size: 300% 300%;
   animation: gradientAnimation 10s ease infinite;
   border-radius: 10px;
-  margin: 10px 15px 20px;
+  margin: 20px 50px 20px 50px;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
   // height: calc(100vh - 4rem);
   color: white;
@@ -105,7 +106,7 @@
 
 .sweet-title {
   color: #fde9ff;
-  font-family: "Space Grotesk", serif;
+  font-family: "Exo 2", sans-serif;
   font-weight: 900;
   text-transform: uppercase;
   font-size: clamp(3rem, 10vw, 6rem);
