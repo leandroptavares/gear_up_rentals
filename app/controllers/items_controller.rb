@@ -8,6 +8,12 @@ class ItemsController < ApplicationController
     else
       @items = Item.all
     end
+    @markers = @items.geocoded.map do |item|
+      {
+        lat: item.latitude,
+        lng: item.longitude
+      }
+    end
   end
 
   def show
