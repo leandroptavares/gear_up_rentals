@@ -1,9 +1,44 @@
-<div class="container">
-  <h1>See all your bookings</h1>
-  <ul>
-    <% @bookings.each do |booking| %>
-      <li><%= link_to booking.item.title, booking_path(booking)%></li>
+<div class="d-flex justify-content-center">
+  <div class="container">
+    <% if @bookings.present? %>
+      <h1 class="text-center">You've booked <%= @bookings.count %><%= @bookings.count > 1 ? " items" : " item" %> so far!</h1>
+      <div class="row">
+        <% @bookings.each do |booking| %>
+          <div class="col-12 mb-3 d-flex justify-content-around">
+            <div class="card" style="width: 40%;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <% if booking.item.image.attached? %>
+                    <div class="card-img-top" style="height: 180px; overflow: hidden;">
+                      <%= cl_image_tag booking.item.image.key, class: "img-fluid", style: "height: 100%; width: 100%; object-fit: cover;" %>
+                    </div>
+                  <% else %>
+                    <div class="card-img-top" style="height: 180px; background-color: #f8f9fa; display: flex; justify-content: center; align-items: center;">
+                      <p>Default image</p>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title"><strong><%= booking.item.title %></strong></h5>
+                    <p class="card-text"><strong>From: </strong><%= booking.start_date %> To: <%= booking.end_date %></p>
+                    <p class="card-text"><small class="text-muted">Booked on: <%= booking.created_at %></small></p>
+                    <%= link_to "View full details", booking_path(booking), class: "text-decoration-none" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% if booking.item.reviews.none? { |review| review.user_id == current_user.id } %>
+              <div class="alert alert-warning" role="alert">
+                Did you enjoy your time with this item? Don't forget to <%= link_to "add a review", item_path(id: booking.item)  %>!
+                <%=  %>
+              </div>
+            <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <h1 class="text-center">You haven't booked any item yet...</h1>
     <% end %>
-    </ul>
+  </div>
 </div>
-

@@ -1,17 +1,29 @@
 <div class="d-flex justify-content-center">
   <div class="container">
     <div class="cards">
+    <% if @items.present? %>
       <% @items.each do |item| %>
         <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="<%= item.image_url %>" alt="<%= item.title %>" height="180" width="200">
+          <% if item.image.attached? %>
+            <div class="card-img-top" style="height: 180px; overflow: hidden;">
+              <%= cl_image_tag item.image.key, class: "img-fluid", style: "height: 100%; width: 100%; object-fit: cover;" %>
+            </div>
+            <% else %>
+              <div class="card-img-top" style="height: 180px; background-color: #f8f9fa; display: flex; justify-content: center; align-items: center;">
+                <p>Default image</p>
+              </div>
+          <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= item.title %></h5>
             <h6 class="card-subtitle mb-2 text-muted"><%= item.category %></h6>
             <p class="card-text">$<%= item.price %> per day</p>
-            <%= link_to "See details", item_path(item) %>
+            <%= link_to "View details", item_path(item) %>
           </div>
         </div>
       <% end %>
+    <% else %>
+      <p class="text-center">Sorry... No items available</p>
+    <% end %>
     </div>
   </div>
 </div>
