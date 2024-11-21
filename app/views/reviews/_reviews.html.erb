@@ -1,39 +1,50 @@
-    <!-- review Section -->
+<!-- review Section -->
 
-    <!-- show existing reviews section  -->
-    <div class="reviewbigcontainer">
-        <ul>
-        <% @reviews.each do |review| %>
-        <li>
-          <div class="container reviewbox border ">
+<!-- show existing reviews section -->
+<div class="reviewbigcontainer">
+  <ul>
+    <% @reviews.each do |review| %>
+      <li>
+        <div class="container reviewbox border">
           <p><strong>Username:</strong>
-          <%= review.user.username%>
+            <%= review.user.username %>
           </p>
           <p><strong>Rating:</strong>
-          <%= review.rating%>
+            <%= review.rating %>
           </p>
           <p><strong>Review:</strong>
-          <%= review.comments%>
-          <% if current_user && review.user_id == current_user.id%>
-          <%=  link_to "🗑️ Delete", item_review_path(review), class: "delete",
-          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-        </p>
+            <%= review.comments %>
+          </p>
+          <p><em>Published on <%= review.created_at.strftime("%d/%m/%Y") %></em>
+          </p>
+          <% if current_user && review.user_id == current_user.id %>
+            <%= link_to item_review_path(review), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "delete text-decoration-none" do %>
+                <i class="fa-solid fa-trash"></i> Delete review
+            <% end %>
           <% end %>
-          <% end %>
-          </div>
-        </li>
-        </ul>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
 
 <!-- review Section -->
 <!-- add new review Section -->
 
-  <%if current_user%>
-<%= simple_form_for [@item, @review] do |f| %>
-  <%= f.input :comments, class: "reviewbox" %>
-  <p>Rating
-  <%= f.select :rating, options_for_select([1, 2, 3, 4, 5], @review.rating), class: "rating-dropdown" %>
-  </p>
-  <%= f.submit class: "reviewbox" %>
+<% if current_user %>
+  <% if @item.bookings.any? { |booking| booking.user_id == current_user.id } %>
+    <% if @item.reviews.any? { |review| review.user_id == current_user.id } %>
+      <p>You've already added a review</p>
+    <% else %>
+      <%= simple_form_for [@item, @review] do |f| %>
+        <%= f.input :comments, class: "reviewbox" %>
+        <p>Rating
+          <%= f.select :rating, options_for_select([1, 2, 3, 4, 5], @review.rating), class: "rating-dropdown" %>
+        </p>
+        <%= f.submit class: "reviewbox" %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p>You haven't booked this item yet</p>
+  <% end %>
 <% end %>
-<% end %>
-</div>
