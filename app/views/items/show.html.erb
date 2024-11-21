@@ -5,7 +5,9 @@
     <div class="col-md-8 details">
       <div>
         <p><% if @item.image_url.present? %>
-          <%= image_tag @item.image_url, class: "img-fluid" %>
+          <div class="">
+            <%= image_tag @item.image_url, class:"img-fluid", style: "width: 600px; height: 400px;" %>
+          </div>
         <% end %>
       </div></p>
       <h3>Description:</h3>

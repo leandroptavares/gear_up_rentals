@@ -2,9 +2,9 @@
   <div class="container">
     <div class="cards">
       <% @items.each do |item| %>
-        <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="<%= item.image_url %>" alt="<%= item.title %>" height="180" width="200">
-          <div class="card-body">
+        <div class="card border border-0" style="width: 18rem;">
+          <img class="card-img-top rounded-4" src="<%= item.image_url %>" alt="<%= item.title %>" height="300" width="180" style="object-fit: cover;">
+          <div class="card-body ">
             <h5 class="card-title"><%= item.title %></h5>
             <h6 class="card-subtitle mb-2 text-muted"><%= item.category %></h6>
             <p class="card-text">$<%= item.price %> per day</p>
