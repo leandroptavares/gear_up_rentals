@@ -1,36 +1,43 @@
-<%= render "shared/banner" %>
+<% unless params[:category].present? || params[:page].present? %>
+  <%= render "shared/banner" %>
+<% end %>
 <div class="d-flex justify-content-center">
   <div class="container">
     <div class="cards">
 
     <% if @items.present? %>
       <% @items.each do |item| %>
-        <div class="card" style="width: 18rem;">
-          <% if item.image.attached? %>
-            <div class="card-img-top" style="height: 180px; overflow: hidden;">
-              <%= cl_image_tag item.image.key, class: "img-fluid", style: "height: 100%; width: 100%; object-fit: cover;" %>
-            </div>
-            <% else %>
-              <div class="card-img-top" style="height: 180px; background-color: #f8f9fa; display: flex; justify-content: center; align-items: center;">
-                <p>Default image</p>
+       <%= link_to item_path(item) do %>
+         <div class="card border border-0" style="width: 18rem;">
+            <% if item.image.attached? %>
+              <div class="card-img-top rounded-4" style="height: 180px; overflow: hidden;">
+                <%= cl_image_tag item.image.key, class: "img-fluid", style: "height: 100%; width: 100%; object-fit: cover;" %>
               </div>
-          <% end %>
-
-          <div class="card-body">
-            <h5 class="card-title"><%= item.title %></h5>
-            <h6 class="card-subtitle mb-2 text-muted"><%= item.category %></h6>
-            <p class="card-text">$<%= item.price %> per day</p>
-            <%= link_to "View details", item_path(item) %>
+              <% else %>
+                <div class="card-img-top" style="height: 180px; background-color: #f8f9fa; display: flex; justify-content: center; align-items: center;">
+                  <p>Default image</p>
+                </div>
+            <% end %>
+      
+            <div class="card-body ">
+              <h5 class="card-title"><%= item.title.capitalize %></h5>
+              <h6 class="card-subtitle mb-2 text-muted"><%= item.category %></h6>
+              <p class="card-text"><strong>$<%= item.price %></strong> per day</p>
+              <%= link_to "View details", item_path(item) %>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
 
-      <% else %>
+    <% else %>
       <p>"Sorry, no item available"</p>
       <% end %>
 
     </div>
   </div>
+</div>
+<div class="d-flex justify-content-center">
+  <%= paginate @items %>
 </div>
 
 <div class="d-flex justify-content-center mt-5">
@@ -41,12 +48,14 @@
 
 <div data-controller="toogle">
   <div class="d-flex justify-content-center">
-    <button type="button" class="btn btn-outline-dark mt-5 mb-3" data-action="click->toogle#hide" data-toogle-target="button">Hide map</button>
+    <button type="button" class="btn btn-outline-dark mt-5 mb-3" data-action="click->toogle#hide" data-toogle-target="button">Show map</button>
   </div>
   <div class="mt-5">
-    <div data-toogle-target="Map">
+    <div class="invisible" data-toogle-target="Map">
       <%= render "shared/map" %>
     </div>
   </div>
 
 </div>
+
+<%# <%= link_to "See details", item_path(item) %>

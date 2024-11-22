@@ -7,7 +7,7 @@
 
 <%# Idea 2 %>
 
-<div class="banner">
+<div class="banner" data-controller="banner" data-banner-target="bannerElement">
   <div class="banner-container">
     <div class="title-wrapper">
       <h1 class="sweet-title">
@@ -15,8 +15,7 @@
         <span data-text="Rent Out">Rent Out</span>
         <span data-text="to PLAY MORE!">to PLAY MORE!</span>
       </h1>
-      <%# <span class="top-title">Discover a world of sports equipment at your fingertips</span> %>
-      <%# <span class="bottom-title">Whether you need gear or have gear to share, we connect athletes and enthusiasts for all kinds of sports!</span> %>
+      <button data-action="click->banner#hide" class="close-banner">Close banner</button>
     </div>
   </div>
 </div>
