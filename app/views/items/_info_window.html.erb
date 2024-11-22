@@ -1,6 +1,12 @@
 <div class="mapboxgl-pop">
-<h4><%= item.title %></h4>
-<%= cl_image_tag item.image.key, class: "img-fluid" %>
-<h6>Location: <%= item.location %></h6>
-<h6>Price: <%= item.price %> per day</h6>
+  <h4><%= item.title %></h4>
+    <% if item.image.key.present? %>
+    <%= link_to item_path(item.id) do %>
+    <%= cl_image_tag item.image.key, class: "img-fluid" %>
+    <% end %>
+    <% else %>
+      <p>No image available</p>
+    <% end %>
+  <h6>Location: <%= item.location %></h6>
+  <h6>Price: $<%= item.price %> per day</h6>
 </div>
