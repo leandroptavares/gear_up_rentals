@@ -1,0 +1,18 @@
+.buttons {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 20px;
+  padding: 12px 18px;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.buttons:hover {
+  background-color: #044c3c;;
+  text-decoration: none;
+}
+
+.buttons:focus {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
