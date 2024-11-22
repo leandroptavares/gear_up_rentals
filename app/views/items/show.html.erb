@@ -1,34 +1,48 @@
 <div class="container">
-<h1><%= @item.title %></h1>
+  <h1><%= @item.title %></h1>
   <div class="row">
     <!-- Details Section -->
     <div class="col-md-8 details">
       <div>
+
         <p><% if @item.image.attached? %>
-          <%= cl_image_tag @item.image.key, style: "height: 100%; width: 100%; object-fit: cover;" %>
+          <%= cl_image_tag @item.image.key, style: "height: 600px; width: 100%; object-fit: cover;" %>
         <% end %>
       </div></p>
-      <h3>Description:</h3>
-      <p><%= @item.description %></p>
-      <p class="card-text">Renter: <%= link_to @item.user.username, user_items_path(user_id: @item.user.id) %></p>
-      <p class="card-text">Pick-up location: <%= @item.location %></p>
+      <div class="card">
+      <div class="card-header">
+        <strong><i class="fa-regular fa-user"></i> Renter: </strong><%= link_to @item.user.username, user_items_path(user_id: @item.user.id) %>
+      </div>
+    <div class="card-body">
+      <h5 class="card-title"><strong>Item details: </strong></h5>
+      <p class="card-text"><%= @item.description %></p>
+      <p class="card-text"><strong><i class="fa-solid fa-location-dot"></i> Pick-up location: </strong><%= @item.location %></p>
+    </div>
+</div>
 
     </div>
 
-    <!-- Booking Section -->
-    <div class="col-4 md-4 booking">
-      <% if current_user %>
-        <%= render "bookings/new" %>
-      <% else %>
-        <h2>Get ready to gear up!</h2>
-        <%= link_to "Sign in to book this item", user_session_path%>
-      <% end %>
+    <!-- Booking and Mapping Section -->
+    <div class="col-md-4">
+      <div class="booking mb-4">
+        <% if current_user %>
+          <%= render "bookings/new" %>
+        <% else %>
+          <h2>Get ready to gear up!</h2>
+          <%= link_to "Sign in to book this item", user_session_path %>
+        <% end %>
+      </div>
+      <div class="mapping">
+        <%= render "shared/map" %>
+      </div>
     </div>
   </div>
+
+  <!-- Reviews Section -->
   <div class="col-md-8">
     <h3 class="mt-3">Reviews (<%= @item.reviews.count %>):</h3>
     <div class="mb-5">
-    <%= render "reviews/reviews" %>
+      <%= render "reviews/reviews" %>
     </div>
   </div>
 </div>

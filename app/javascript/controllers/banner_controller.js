@@ -10,7 +10,7 @@ export default class extends Controller {
   }
 
   hide() {
-    console.log("hide!!!")
+    console.log
     this.bannerElementTarget.classList.toggle("d-none")
   }
 }

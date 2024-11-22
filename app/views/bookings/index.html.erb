@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center">
   <div class="container">
     <% if @bookings.present? %>
-      <h1 class="text-center">You've booked <%= @bookings.count %><%= @bookings.count > 1 ? " items" : " item" %> so far!</h1>
+      <h1 class="text-center mb-3">You've booked <%= @bookings.count %><%= @bookings.count > 1 ? " items" : " item" %> so far!</h1>
       <div class="row">
         <% @bookings.each do |booking| %>
           <div class="col-12 mb-3 d-flex justify-content-around">
