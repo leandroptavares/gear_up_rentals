@@ -48,7 +48,7 @@
         <p>Rating
           <%= f.select :rating, options_for_select([1, 2, 3, 4, 5], @review.rating), class: "rating-dropdown" %>
         </p>
-        <%= f.submit class: "reviewbox" %>
+        <%= f.submit class: "buttons" %>
       <% end %>
     <% end %>
   <% else %>

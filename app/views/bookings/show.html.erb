@@ -19,7 +19,7 @@
           <p><strong>Total price: </strong>$<%= @booking.total_price %></p>
         </div>
 
-        <h4 class="text-center py-3"><%=link_to "Check all your bookings", bookings_path(user_id: @booking.user_id ) %>
+        <h4 class="text-center py-3"><%=link_to "Check all your bookings", bookings_path(user_id: @booking.user_id ), class: "buttons" %>
         <%# <<%= link_to "Edit booking details", item_path()%>
       </div>
     </div>

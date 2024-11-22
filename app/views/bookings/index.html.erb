@@ -24,8 +24,8 @@
                     <p class="card-text"><strong>From: </strong><%= booking.start_date %> To: <%= booking.end_date %></p>
                     <p class="card-text"><small class="text-muted">Booked on: <%= booking.created_at %></small></p>
                     <div class="d-flex justify-content-between">
-                      <p><%= link_to "View full details", booking_path(booking), class: "text-decoration-none" %></p>
-                      <p><%= link_to "Book again", item_path(id: booking.item), class: "text-decoration-none" %></p>
+                      <p><%= link_to "View full details", booking_path(booking), class: "buttons" %></p>
+                      <p><%= link_to "Book again", item_path(id: booking.item), class: "buttons" %></p>
                     </div>
                   </div>
                 </div>

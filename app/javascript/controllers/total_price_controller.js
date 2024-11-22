@@ -9,6 +9,7 @@ export default class extends Controller {
   connect() {
     console.log("hi from total price")
     this.SubmitButtonTarget.disabled = true;
+    console.log(this.SubmitButtonTarget)
   }
 
   sum() {

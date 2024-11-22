@@ -1,0 +1,52 @@
+.buttons {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 20px;
+  padding: 12px 18px;
+  font-size: 12px;
+  text-transform: uppercase;
+  border: none;
+  text-align: center;
+}
+
+.buttons:hover {
+  background-color: #044c3c;;
+  text-decoration: none;
+}
+
+.buttons:focus {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+.close-banner{
+  background-color: #4af6ff16;
+  color: white;
+  font-size: 12px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  cursor: pointer;
+    /* Adjust hover styles */
+  &:hover {
+    background-color: #34d7e3;
+    opacity: 0.6;
+  }
+}
+
+
+
+// input.buttons {
+//   background-color: #ff0000 !important;
+//   color: white;
+//   padding: 10px 20px;
+//   border: none;
+//   border-radius: 5px;
+//   cursor: pointer;
+//   font-size: 16px;
+// }
+
+// input.buttons {
+//   background-color: #007bff !important;
+// }
