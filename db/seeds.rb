@@ -9,6 +9,17 @@
 #   end
 require 'faker'
 
+# Delete all reviews first
+Review.delete_all
+# Delete all bookings first
+Booking.delete_all
+puts "deleting exiusting itenms and users"
+
+Item.destroy_all
+User.destroy_all
+
+puts "creating 10 users"
+
 users = []
 
 10.times do
@@ -39,6 +50,7 @@ categories: ["Outdoor Adventure", "Water Sports", "Winter Sports", "Team Sports"
 url: ["https://petapixel.com/assets/uploads/2022/09/SportsPhotographerBasketball1-800x800.jpeg", "https://static.euronews.com/articles/stories/05/89/34/62/1200x675_cmsv2_c8374f74-3e7e-5390-89cf-9383e3b72570-5893462.jpg", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJav821-VzLh7i2midUdvoeKZzhfJwLPZc-Q&s", "https://verticalraise.com/wp-content/uploads/2023/03/VerticalRaiseLLC-230343-Importance-Sports-Schools-Blogbanner1.jpg", "https://www.fshfcknoxvillegym.com/wp-content/uploads/sites/4/2019/08/Fitness-4-e1565724877462.jpg", "https://cdn.shopify.com/s/files/1/0551/0388/1250/files/cycling_benefits_styrkr.jpg?v=1676894320", "https://images.fastcompany.com/image/upload/f_webp,q_auto,c_fit/wp-cms-2/2024/07/p-91164425-paris-olympics-2024-and-power-of-womens-sports.jpg"]
 }
 
+puts "createing 50 items"
 
 50.times do
   description = Faker::Lorem.paragraph(sentence_count: 3)
@@ -57,8 +69,6 @@ url: ["https://petapixel.com/assets/uploads/2022/09/SportsPhotographerBasketball
     image_url: items[:url].sample,
     user: user
   )
-
-  
 
   item.save
 end

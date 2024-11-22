@@ -1,48 +1,59 @@
-    <!-- review Section -->
+<!-- review Section -->
 
-    <!-- show existing reviews section  -->
-    <div class="reviewbigcontainer">
-        <ul>
-        <% @reviews.each do |review| %>
-        <li>
-          <div class="container reviewbox border ">
-            <div class= "d-flex align-items-center pt-3">
-              <i class="fa-solid fa-circle-user fa-2xl pb-2" style="color: #769fa7;"></i>
-              <strong><h5 class="ps-2"><%= review.user.username%></h5><strong>
-            </div>
-          <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-          <%= review.rating%>
-          </p>
-          <%# <p><strong>Review:</strong> %>
-          <p><%= review.comments%></p>
-          <% if current_user && review.user_id == current_user.id%>
-          <%=  link_to "🗑️ Delete", item_review_path(review), class: "delete",
-          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-        </p>
-          <% end %>
-          <% end %>
+<!-- show existing reviews section -->
+<div class="reviewbigcontainer">
+  <ul>
+    <% @reviews.each do |review| %>
+      <li>
+        <div class="card">
+          <div class="card-header">
+            <% review.rating.times do %>
+              <i class="fa-solid fa-star"></i>
+            <% end %>
+            <% (5 - review.rating).times do %>
+              <i class="fa-regular fa-star"></i>
+            <% end %>
           </div>
-        </li>
-        </ul>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p><%= review.comments %></p>
+              <footer class="blockquote-footer"><%= review.user.username %>
+              <p><cite title="Source Title">Published on <%= review.created_at.strftime("%d/%m/%Y") %></cite></p></footer>
+            </blockquote>
+          </div>
+          <% if current_user && review.user_id == current_user.id %>
+            <%= link_to item_review_path(review), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "delete text-decoration-none" do %>
+                <i class="fa-solid fa-trash"></i> Delete review
+            <% end %>
+          <% end %>
+
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
 
 <!-- review Section -->
 <!-- add new review Section -->
 
-  <%if current_user%>
-<%= simple_form_for [@item, @review] do |f| %>
-  <%= f.input :comments, class: "reviewbox", placeholder: "Leave a review" %>
-  <%# <p>Rating %>
-  <%# <%= f.select :rating, options_for_select([1, 2, 3, 4, 5], @review.rating), class: "rating-dropdown" %>
-  <%= f.label :rating, 'Rating' %>
-    <div class="star-rating">
-      <% (1..5).each do |star| %>
-        <%= f.radio_button :rating, star %>
-        <%= f.label :rating, star, value: star do %>
-          <%= "★" %>
-        <% end %>
+<% if current_user %>
+  <% if @item.bookings.any? { |booking| booking.user_id == current_user.id } %>
+    <% if @item.reviews.any? { |review| review.user_id == current_user.id } %>
+      <div class="alert alert-success" role="alert">
+        We've got your review! Keep gearing up like a pro.
+      </div>
+    <% else %>
+      <%= simple_form_for [@item, @review] do |f| %>
+        <%= f.input :comments, class: "reviewbox" %>
+        <p>Rating
+          <%= f.select :rating, options_for_select([1, 2, 3, 4, 5], @review.rating), class: "rating-dropdown" %>
+        </p>
+        <%= f.submit class: "reviewbox" %>
       <% end %>
-  </p>
-  <%= f.submit class: "reviewbox" %>
+    <% end %>
+  <% else %>
+    <div class="alert alert-warning" role="alert">
+      You haven't booked this item yet—book now and share your review later!
+    </div>
+  <% end %>
 <% end %>
-<% end %>
-</div>

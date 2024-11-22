@@ -7,6 +7,19 @@ class ItemsController < ApplicationController
       @items = Item.where(category: params[:category])
     else
       @items = Item.all
+      if params[:search].present?
+        @items = Item.search_by_title_and_category_and_location(params[:search])
+      else
+        @items = Item.all
+      end
+    end
+    @items = @items.page(params[:page]).per(12)
+    @markers = @items.geocoded.map do |item|
+      {
+        lat: item.latitude,
+        lng: item.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {item: item})
+      }
     end
   end
 
@@ -27,7 +40,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to my_items_path
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -36,7 +49,11 @@ class ItemsController < ApplicationController
 
   def update
     @item.update(item_params)
-    redirect_to my_items_path
+    if @item.save
+      redirect_to my_items_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy

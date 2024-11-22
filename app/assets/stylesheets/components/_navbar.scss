@@ -1,6 +1,9 @@
 section.navbar-white {
   background: white;
   border-bottom: 0.5px solid lightgray;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .navbar-lewagon {
@@ -12,7 +15,7 @@ section.navbar-white {
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 60px;
 }
 
 .search-form-control {
@@ -47,9 +50,9 @@ section.navbar-white {
   background-color: #888a8c;
 }
 
-.navbar-brand {
-  background-color: rgb(4, 76, 60);
-}
+// .navbar-brand {
+//   background-color: rgb(4, 76, 60);
+// }
 
 .search-icon-button {
   position: absolute;
