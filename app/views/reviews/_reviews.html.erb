@@ -22,7 +22,7 @@
             </blockquote>
           </div>
           <% if current_user && review.user_id == current_user.id %>
-            <%= link_to item_review_path(review), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "delete text-decoration-none" do %>
+            <%= link_to review_path(review), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "delete text-decoration-none" do %>
                 <i class="fa-solid fa-trash"></i> Delete review
             <% end %>
           <% end %>

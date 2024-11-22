@@ -8,7 +8,15 @@
     <div class="row justify-content-center my-5">
       <div class="col-12 col-lg-6 border rounded shadow py-3 px-4">
         <h3 class="pt-4 text-center">Booking details:</h3>
-        <img class="d-flex align-items-center" style="height: 300px; width: 100%; background-color: #f8f9fa; display: flex; justify-content: center; align-items: center">
+        <% if @booking.item.image.attached? %>
+                    <div class="card-img-top" style="overflow: hidden;">
+                      <%= cl_image_tag @booking.item.image.key, class: "img-fluid", style: "height: 350px; width: 100%; object-fit: cover;" %>
+                    </div>
+                  <% else %>
+                    <div class="card-img-top" style="height: 180px; background-color: #f8f9fa; display: flex; justify-content: center; align-items: center;">
+                      <p>Default image</p>
+                    </div>
+                  <% end %>
         <p class="ps-2 pt-3"><strong>Item: </strong><%= @booking.item.title %></p>
         <p class="ps-2"><strong>Description: </strong><%= @booking.item.description %></p>
         <p><i class="fa-solid fa-location-dot fa-lg ps-2" style="color: #044c3c;"></i><strong>Pick-up location: </strong><%= @booking.item.location %></p>
