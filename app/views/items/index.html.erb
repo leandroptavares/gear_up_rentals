@@ -1,4 +1,6 @@
-<%= render "shared/banner" %>
+<% unless params[:category].present? || params[:page].present? %>
+  <%= render "shared/banner" %>
+<% end %>
 <div class="d-flex justify-content-center">
   <div class="container">
     <div class="cards">
@@ -29,10 +31,12 @@
       <p>"Sorry, no item available"</p>
       <% end %>
 
-      <%= paginate @items %>
+
     </div>
   </div>
 </div>
+
+ <%= paginate @items %>
 
 <div data-controller="toogle">
   <div class="d-flex justify-content-center">
