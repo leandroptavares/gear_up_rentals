@@ -1,3 +1,4 @@
+<%= render "shared/banner" %>
 <div class="d-flex justify-content-center">
   <div class="container">
     <div class="cards">
@@ -29,11 +30,18 @@
       <% end %>
 
       <%= paginate @items %>
-
-
     </div>
   </div>
 </div>
-<div class="mt-5">
-<%= render "shared/map" %>
+
+<div data-controller="toogle">
+  <div class="d-flex justify-content-center">
+    <button type="button" class="btn btn-outline-dark mt-5 mb-3" data-action="click->toogle#hide" data-toogle-target="button">Hide map</button>
+  </div>
+  <div class="mt-5">
+    <div data-toogle-target="Map">
+      <%= render "shared/map" %>
+    </div>
+  </div>
+
 </div>

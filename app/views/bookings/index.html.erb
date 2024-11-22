@@ -23,7 +23,10 @@
                     <h5 class="card-title"><strong><%= booking.item.title %></strong></h5>
                     <p class="card-text"><strong>From: </strong><%= booking.start_date %> To: <%= booking.end_date %></p>
                     <p class="card-text"><small class="text-muted">Booked on: <%= booking.created_at %></small></p>
-                    <%= link_to "View full details", booking_path(booking), class: "text-decoration-none" %>
+                    <div class="d-flex justify-content-between">
+                      <p><%= link_to "View full details", booking_path(booking), class: "text-decoration-none" %></p>
+                      <p><%= link_to "Book again", item_path(id: booking.item), class: "text-decoration-none" %></p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -31,7 +34,7 @@
           </div>
           <% if booking.item.reviews.none? { |review| review.user_id == current_user.id } %>
               <div class="alert alert-warning" role="alert">
-                Did you enjoy your time with this item? Don't forget to <%= link_to "add a review", item_path(id: booking.item)  %>!
+                Had a winning experience with Gear Up Rentals? Don't forget to <%= link_to "share your review", item_path(id: booking.item)  %>!
                 <%=  %>
               </div>
             <% end %>
