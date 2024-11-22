@@ -28,6 +28,11 @@ class ItemsController < ApplicationController
     @booking = Booking.new(item_id: @item_id)
     @review = Review.new(item_id: @item_id)
     @reviews = Review.where(item_id: @item.id)
+    @markers = [{
+        lat: @item.latitude,
+        lng: @item.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {item: @item})
+      }]
   end
 
   def new
