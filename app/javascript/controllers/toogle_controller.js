@@ -11,12 +11,12 @@ export default class extends Controller {
 
   hide() {
     console.log("clicked")
-    this.MapTarget.classList.toggle("d-none")
+    this.MapTarget.classList.toggle("invisible")
 
-    if (this.buttonTarget.textContent === "Hide map") {
-      this.buttonTarget.textContent = "Show map"
-    } else {
+    if (this.buttonTarget.textContent === "Show map") {
       this.buttonTarget.textContent = "Hide map"
+    } else {
+      this.buttonTarget.textContent = "Show map"
     }
   }
 }

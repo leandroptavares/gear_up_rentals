@@ -36,10 +36,10 @@
 
 <div data-controller="toogle">
   <div class="d-flex justify-content-center">
-    <button type="button" class="btn btn-outline-dark mt-5 mb-3" data-action="click->toogle#hide" data-toogle-target="button">Hide map</button>
+    <button type="button" class="btn btn-outline-dark mt-5 mb-3" data-action="click->toogle#hide" data-toogle-target="button">Show map</button>
   </div>
   <div class="mt-5">
-    <div data-toogle-target="Map">
+    <div class="invisible" data-toogle-target="Map">
       <%= render "shared/map" %>
     </div>
   </div>
