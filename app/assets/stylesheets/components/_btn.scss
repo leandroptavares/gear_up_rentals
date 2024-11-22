@@ -18,10 +18,23 @@
   outline-offset: 2px;
 }
 
-// input.buttons[type="submit"] {
-//   background-color: #007bff;
-//   color: red;
-// }
+.close-banner{
+  background-color: #4af6ff16;
+  color: white;
+  font-size: 12px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  cursor: pointer;
+    /* Adjust hover styles */
+  &:hover {
+    background-color: #34d7e3;
+    opacity: 0.6;
+  }
+}
+
+
 
 // input.buttons {
 //   background-color: #ff0000 !important;
